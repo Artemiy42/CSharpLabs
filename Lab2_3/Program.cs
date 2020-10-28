@@ -80,4 +80,5 @@ namespace Lab2_3
             return first * second;
         }
     }
+    
 }
