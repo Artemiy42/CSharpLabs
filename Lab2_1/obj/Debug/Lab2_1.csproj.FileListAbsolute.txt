@@ -1,0 +1,6 @@
+E:\Programming\C#\Projects\СSharpLabs\Lab2_1\bin\Debug\Lab2_1.exe
+E:\Programming\C#\Projects\СSharpLabs\Lab2_1\bin\Debug\Lab2_1.pdb
+E:\Programming\C#\Projects\СSharpLabs\Lab2_1\obj\Debug\Lab2_1.csprojAssemblyReference.cache
+E:\Programming\C#\Projects\СSharpLabs\Lab2_1\obj\Debug\Lab2_1.csproj.CoreCompileInputs.cache
+E:\Programming\C#\Projects\СSharpLabs\Lab2_1\obj\Debug\Lab2_1.exe
+E:\Programming\C#\Projects\СSharpLabs\Lab2_1\obj\Debug\Lab2_1.pdb
