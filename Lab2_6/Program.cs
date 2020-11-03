@@ -8,19 +8,17 @@ namespace Lab2_6
     {
         private static bool flagString;
         private static int flagComment;
-        private static bool isComment;
-        private static bool isLineComment;
-
-        private static StreamWriter file;
-
         private static bool isMultilineComment;
 
+        private static StreamWriter file;
+        
         public static void Main(string[] args)
         {
+            
             if (args.Length != 1)
             {
                 Console.WriteLine("Програма приймає на вхід шлях файлу з коментарями." + 
-                                  "Приклад запуску програми: Lab2_6.exe Text.txt");
+                                  "Приклад запуску програми: Lab2_6.exe D:\\Text.txt");
             }
 
             string path = args[0];
@@ -41,7 +39,7 @@ namespace Lab2_6
             for (int i = 0; i < str.Length; i++)
             {
                 switch (str[i])
-                {
+                { 
                     case '/':
                         if (!flagString)
                         {
@@ -50,13 +48,14 @@ namespace Lab2_6
                                 if (flagComment == 1)
                                 {
                                     isMultilineComment = false;
+                                    flagComment = 0;
                                 }
                             }
                             else
                             {
                                 ++flagComment;
-
-                                if (flagComment == 2)
+                                
+                                if (flagComment == 2) 
                                 {
                                     flagComment = 0;
                                     file.Write('\n');
