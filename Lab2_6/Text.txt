@@ -1,13 +1,11 @@
 using System;
-// Comment
+
 namespace Lab2_1
 {
-    // Other comment
+    
     internal class Program
     {
-        /*
-            I want more comments
-        */
+        
         public static void Main(string[] args)
         {
             Console.Write("Введіть кінець діапазона від 2 до : ");
@@ -28,14 +26,14 @@ namespace Lab2_1
                     }
                 }
                 
-                if (isPrime) // And here 
+                if (isPrime) 
                 { 
                     Console.Write("{0} ", i);
                 }
             }
             
             DateTime end = DateTime.Now; 
-            Console.WriteLine("\n{0} сек.", (end-start).TotalSeconds); // And here 
+            Console.WriteLine("\n{0} сек.", (end-start).TotalSeconds); 
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Lab2_6
         
         public static void Main(string[] args)
         {
+            Console.Write(Math.Round(-3.14));
             
             if (args.Length != 1)
             {
