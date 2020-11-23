@@ -1,0 +1,15 @@
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\bin\Debug\netcoreapp3.1\Lab3_1.exe
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\bin\Debug\netcoreapp3.1\Lab3_1.deps.json
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\bin\Debug\netcoreapp3.1\Lab3_1.runtimeconfig.json
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\bin\Debug\netcoreapp3.1\Lab3_1.runtimeconfig.dev.json
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\bin\Debug\netcoreapp3.1\Lab3_1.dll
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\bin\Debug\netcoreapp3.1\Lab3_1.pdb
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.csprojAssemblyReference.cache
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.AssemblyInfoInputs.cache
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.AssemblyInfo.cs
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.csproj.CoreCompileInputs.cache
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.dll
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.pdb
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.genruntimeconfig.cache
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\bin\Debug\netcoreapp3.1\args.dll
+E:\Programming\C#\Projects\СSharpLabs\Lab3_1\obj\Debug\netcoreapp3.1\Lab3_1.csproj.CopyComplete

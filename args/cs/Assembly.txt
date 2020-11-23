@@ -1,0 +1,26 @@
+
+/**
+каталог
+\section ¬ведение2
+
+\section “естирование
+
+например,
+на следующей странице использовани€ приложени€
+
+----
+     
+    to test command line arguments
+
+    usage:
+    app[-?] [-v] [-l LLL] ...
+    options:
+      -?          		: to see this help: True
+      -v          		: additional info: True
+      -l LLL		: log level (1..8): 1
+    '?' means the same as 'help'
+    'v' means the same as 'verbose'
+    'l' means the same as 'log'
+     
+----
+*/

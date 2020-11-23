@@ -1,0 +1,4 @@
+Program.cs(50,16): warning CS0642: Possible mistaken empty statement
+Program.cs(52,16): warning CS0642: Possible mistaken empty statement
+Program.cs(54,16): warning CS0642: Possible mistaken empty statement
+Program.cs(56,16): warning CS0642: Possible mistaken empty statement
