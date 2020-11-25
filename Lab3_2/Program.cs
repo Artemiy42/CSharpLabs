@@ -93,6 +93,14 @@ namespace Lab3_2
             string field = "";
             string str = "";
             string[] words;
+
+            for (int i = 0; i < 122; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    
+                }
+            }
             
             try
             {
