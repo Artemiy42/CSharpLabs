@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Lab3_2": {
+      "commandName": "Project",
+      "commandLineArgs": "-f E:\\Programming\\C#\\Projects\\СSharpLabs\\Lab3_2\\in.txt -s 2"
+    }
+  }
+}
