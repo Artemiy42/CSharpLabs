@@ -1,3 +1,5 @@
+#pragma warning disable 642
+
 using System;
 using System.Windows.Forms;
 using Args;
@@ -20,7 +22,7 @@ namespace Lab3_1
                     Arg.mkVHelp("to test command line arguments", "", vFlag, hFlag, vFlag, sFlag); 
                     Environment.Exit(1);
                 }
-                else if (vFlag.check(ref i, args)) 
+                else if (vFlag.check(ref i, args))
                     ;
                 else if (sFlag.check(ref i, args)) 
                     ;
