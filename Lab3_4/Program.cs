@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Lab3_4
 {
@@ -295,6 +296,8 @@ namespace Lab3_4
     {
         static int Main(string[] args)
         {
+            Console.InputEncoding = Encoding.UTF8;
+            
             string fileName = String.Empty;
             char sep = ' ';
             int sortOrder = 1;
@@ -428,7 +431,7 @@ namespace Lab3_4
             }
             else
             {
-                using (BinaryReader  br = new BinaryReader (File.Open(fileName, FileMode.Open)))
+                using (BinaryReader br = new BinaryReader(File.Open(fileName, FileMode.Open)))
                 {
                     binToTxt(Console.Out, br, vSort, rec);
                 }
@@ -445,7 +448,6 @@ namespace Lab3_4
 
         public static void binToTxt(TextWriter tw, BinaryReader br, bool sort, Converter rec)
         {
-            string r;
             List<Converter> ls = new List<Converter>();
 
             while (br.BaseStream.Position != br.BaseStream.Length)

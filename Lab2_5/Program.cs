@@ -9,7 +9,7 @@ namespace Lab2_5
         public static int Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            string filePath = @"E:\Programming\C#\Projects\СSharpLabs\Lab2_5\in.txt";
+            string filePath = @"D:\Repositories\CSharpLabs\Lab2_5\in.txt";
             int latitude = -1;
             int longitude = -1;
             char sep = ' ';
@@ -92,21 +92,23 @@ namespace Lab2_5
                     return 2;
                 }
 
-                field = "Широта";
-                string[] words = getRec(lines[longitude - 1], sep);
-                double aa = double.Parse(words[0]);
-                
-                field = "Довгота";
-                words = getRec(lines[latitude - 1], sep);
-                double bb = double.Parse(words[1]);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    field = "Широта";
+                    string[] words = getRec(lines[i], sep);
+                    double aa = double.Parse(words[latitude - 1]);
+                    
+                    field = "Довгота";
+                    double bb = double.Parse(words[longitude - 1]);
 
-                if (f8)
-                {
-                    Console.WriteLine("{0:f8} {1:f8}", aa, bb);
-                }
-                else
-                {
-                    Console.WriteLine("{0:f6} {1:f6}", aa, bb);
+                    if (f8)
+                    {
+                        Console.WriteLine("{0:f8} {1:f8}", aa, bb);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0:f6} {1:f6}", aa, bb);
+                    }
                 }
             }
             catch (Exception e)

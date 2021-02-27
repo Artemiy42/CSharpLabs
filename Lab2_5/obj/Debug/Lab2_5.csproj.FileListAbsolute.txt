@@ -4,3 +4,9 @@ E:\Programming\C#\Projects\СSharpLabs\Lab2_5\obj\Debug\Lab2_5.csprojAssemblyRef
 E:\Programming\C#\Projects\СSharpLabs\Lab2_5\obj\Debug\Lab2_5.csproj.CoreCompileInputs.cache
 E:\Programming\C#\Projects\СSharpLabs\Lab2_5\obj\Debug\Lab2_5.exe
 E:\Programming\C#\Projects\СSharpLabs\Lab2_5\obj\Debug\Lab2_5.pdb
+D:\Repositories\CSharpLabs\Lab2_5\bin\Debug\Lab2_5.exe
+D:\Repositories\CSharpLabs\Lab2_5\bin\Debug\Lab2_5.pdb
+D:\Repositories\CSharpLabs\Lab2_5\obj\Debug\Lab2_5.csprojAssemblyReference.cache
+D:\Repositories\CSharpLabs\Lab2_5\obj\Debug\Lab2_5.csproj.CoreCompileInputs.cache
+D:\Repositories\CSharpLabs\Lab2_5\obj\Debug\Lab2_5.exe
+D:\Repositories\CSharpLabs\Lab2_5\obj\Debug\Lab2_5.pdb

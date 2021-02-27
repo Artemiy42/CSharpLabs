@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\janis\\.nuget\\packages\\": {}
+    "C:\\Users\\Компьютер\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Unity\\CSharpLabs\\Lab3_1\\Lab3_1.csproj",
+      "projectUniqueName": "D:\\Repositories\\CSharpLabs\\Lab3_1\\Lab3_1.csproj",
       "projectName": "Lab3_1",
-      "projectPath": "D:\\Unity\\CSharpLabs\\Lab3_1\\Lab3_1.csproj",
-      "packagesPath": "C:\\Users\\janis\\.nuget\\packages\\",
-      "outputPath": "D:\\Unity\\CSharpLabs\\Lab3_1\\obj\\",
+      "projectPath": "D:\\Repositories\\CSharpLabs\\Lab3_1\\Lab3_1.csproj",
+      "packagesPath": "C:\\Users\\Компьютер\\.nuget\\packages\\",
+      "outputPath": "D:\\Repositories\\CSharpLabs\\Lab3_1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\janis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Компьютер\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
