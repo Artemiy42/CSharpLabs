@@ -10,21 +10,50 @@ namespace Lab5_2
     static class Program
     {
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Field a = new Field("Введіть ім'я користувача", "Admin");
-            Field b = new Field("Пароль", "*****");
-            Form w = new WindowFields("Введіть ім'я та пароль", a, b);
-            
-            DialogResult rc = w.ShowDialog();
+            bool isLab5_2 = false;
 
-            if (rc == DialogResult.OK)
+            for (int i = 0; i < args.Length; i++)
             {
-                Console.WriteLine("Ви ввели пароль ’{0}’ ’{1}’", a.value, b.value);
+                if (args[i] == "-?" || args[i].ToLower() == "-help")
+                {
+                    Console.WriteLine(
+                        "Programma dlya vstavki v formu knopki, nadpisi ili tekstovogo polya." +
+                        "a.exe [-? | -help] [-2]" +
+                        "де\n" +
+                        "-? | -help  : отримання цієї справки\n" +
+                        "-2          : запуск віконця з лабораторної 5.2. За замовчуванням запускається віконце з лаболаторної 5.3\n");
+
+                    return;
+                }
+                else if (args[i].ToLower() == "-2")
+                {
+                    isLab5_2 = true;
+                }
+            }
+
+            if (isLab5_2)
+            {
+                OkCancel w = new OkCancel("Text");
+                DialogResult rc = w.ShowDialog();
+                Console.WriteLine("result is {0}", rc);
             }
             else
-                Console.WriteLine("Ви відмовились від вводу");
+            {
+                Field a = new Field("Введіть ім'я користувача", "Admin");
+                Field b = new Field("Пароль", "*****");
+                Form w = new WindowFields("Введіть ім'я та пароль", a, b);
 
+                DialogResult rc = w.ShowDialog();
+
+                if (rc == DialogResult.OK)
+                {
+                    Console.WriteLine("Ви ввели пароль ’{0}’ ’{1}’", a.value, b.value);
+                }
+                else
+                    Console.WriteLine("Ви відмовились від вводу");
+            }
         }
     }
      
