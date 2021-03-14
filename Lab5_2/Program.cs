@@ -158,7 +158,7 @@ namespace Lab5_2
             ControlBox = false;
             AutoScroll = false;
             AutoSize = true;
-            Size = new Size(10, 10);
+            Size = new Size(370, 200);
 
             Panel p0 = new Panel(); // эта панель задает высоту строки
             p0.Size = new Size(1, 32);
@@ -186,7 +186,7 @@ namespace Lab5_2
         {
             okButton = new Button();
             okButton.Size = new Size(112, 32);
-            okButton.Dock = DockStyle.Right; // вправо
+            okButton.Dock = DockStyle.Bottom;
             okButton.Text = "Ok";
             okButton.DialogResult = DialogResult.OK;
             Controls.Add(okButton);
@@ -196,7 +196,7 @@ namespace Lab5_2
         {
             cancleButton = new Button();
             cancleButton.Size = new Size(112, 32);
-            cancleButton.Dock = DockStyle.Right;
+            cancleButton.Dock = DockStyle.Bottom;
             cancleButton.Text = "Cancel";
             cancleButton.DialogResult = DialogResult.Cancel;
             Controls.Add(cancleButton);
