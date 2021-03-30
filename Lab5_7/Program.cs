@@ -66,8 +66,8 @@ namespace Lab5_7
             statStrip.Items.Add(statLabel);
             Controls.Add(statStrip);
             Controls.Add(Menu);
-            statStrip.Items[0].Text = "окно готово";
-            statStrip.Items[1].Text = "дочерних окон нет";
+            statStrip.Items[0].Text = "Вікно готово";
+            statStrip.Items[1].Text = "Дічірніх вікон немає";
         }
 
         private bool shouldIOpen(string text)
@@ -86,52 +86,57 @@ namespace Lab5_7
         {
             Console.WriteLine("Поставщики");
             string id = "supplier";
+
             if (shouldIOpen(id))
             {
-                statStrip.Items[1].Text = "окно поставщиков не готово";
+                statStrip.Items[1].Text = "Вікно поставщиків не готово";
                 Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/s.csv", Encoding.UTF8);
                 z.MdiParent = Program.mainWin;
                 z.Text = "Поставщики";
                 z.Name = id;
                 z.Show();
             }
-            statStrip.Items[1].Text = "Поставщики загружены";
+            statStrip.Items[1].Text = "Поставщики загружені";
         }
         private void PartF(object sender, EventArgs a)
         {
-            Console.WriteLine("Детали");
+            Console.WriteLine("Деталі");
             string id = "part";
+
             if (shouldIOpen(id))
             {
-                statStrip.Items[1].Text = "окно деталей не готово";
+                statStrip.Items[1].Text = "Вікно деталей не готово";
                 Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/p.csv", Encoding.UTF8);
                 z.MdiParent = Program.mainWin;
                 z.Text = "Детали";
                 z.Name = id;
                 z.Show();
             }
-            statStrip.Items[1].Text = "Детали загружены";
+            statStrip.Items[1].Text = "Деталі звантажені";
         }
         private void ProjectF(object sender, EventArgs a)
         {
-            Console.WriteLine("Проекты");
+            Console.WriteLine("Проекти");
             string id = "project";
+            
             if (shouldIOpen(id))
             {
-                statStrip.Items[1].Text = "окно проектов не готово";
+                statStrip.Items[1].Text = "Вікно проектів не готово";
                 Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/j.csv", Encoding.UTF8);
                 z.MdiParent = Program.mainWin;
-                z.Text = "Проекты";
+                z.Text = "Проекти";
                 z.Name = id;
                 z.Show();
             }
-            statStrip.Items[1].Text = "Проекты загружены";
+
+            statStrip.Items[1].Text = "Проекти звантажені";
         }
         private void DeliveryF(object sender, EventArgs a)
         {
             Console.WriteLine("Поставки");
-            statStrip.Items[1].Text = "окно поставок не готово";
+            statStrip.Items[1].Text = "Вікно поставок не готово";
             string id = "delivery";
+
             if (shouldIOpen(id))
             {
                 Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/spj.csv", Encoding.UTF8);
@@ -140,19 +145,20 @@ namespace Lab5_7
                 z.Name = id;
                 z.Show();
             }
-            statStrip.Items[1].Text = "Поставки загружены";
+
+            statStrip.Items[1].Text = "Поставки завантажені";
         }
         private void aboutF(object sender, EventArgs a)
         {
-            Console.WriteLine("about");
-            statStrip.Items[1].Text = "открыли окно About";
+            Console.WriteLine("About");
+            statStrip.Items[1].Text = "Відкрито вікно About";
+            
             MessageBox.Show("This programm was made by ImiaRek, Kiev 201?.");
-            statStrip.Items[1].Text = "дочерних окон нет";
+            statStrip.Items[1].Text = "Дочірніх вікон немає";
         }
         private void exitF(object sender, EventArgs x)
         {
             Console.WriteLine("FormClosing");
-            //ClickEvent FormClosing = FormClosedEventHandler;
             MessageBox.Show("exit");
             Close();
         }
