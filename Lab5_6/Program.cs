@@ -14,6 +14,7 @@ namespace Lab5_6
         static void Main(string[] args)
         {
             Encoding encoding = Encoding.UTF8;
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Dictionary<string, Encoding> encodingPairs = new Dictionary<string, Encoding>
             {
                 { "866", Encoding.GetEncoding(866) },
@@ -507,9 +508,9 @@ namespace Lab5_6
 
         public void doSave()
         {
-            string ss = csvExport(fileName, ';', dataGridView);
-            Console.WriteLine("Зберегти: '{0}'", ss);
-            statStrip.Items[0].Text = ss;
+            saveIntoFile(fileName);
+            Console.WriteLine("Data saved!");
+            statStrip.Items[0].Text = "Data saved!";         
         }
 
         public void doInsert()
@@ -548,10 +549,72 @@ namespace Lab5_6
             }
         }
 
-        public virtual string csvExport(string nm, char sep_, DataGridView dgvw)
+        public void doExport()
         {
-            string rc = "Помилка";
-            return rc;
+            if (dataGridView.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "CSV (*.csv)|*.csv";
+                sfd.FileName = "Output.csv";
+
+                bool fileError = false;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            saveIntoFile(sfd.FileName);
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
+        }
+
+        private void saveIntoFile(string fileName)
+        {
+            int columnCount = dataGridView.Columns.Count;
+            string columnNames = "";
+            string[] outputCsv = new string[dataGridView.Rows.Count + 1];
+
+            for (int i = 0; i < columnCount; i++)
+            {
+                columnNames += dataGridView.Columns[i].HeaderText.ToString() + ";";
+            }
+
+            outputCsv[0] += columnNames;
+
+            for (int i = 1; (i - 1) < dataGridView.Rows.Count; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    outputCsv[i] += dataGridView.Rows[i - 1].Cells[j].Value.ToString() + ";";
+                }
+            }
+
+            File.WriteAllLines(fileName, outputCsv, Encoding.UTF8);
         }
     }
 }
