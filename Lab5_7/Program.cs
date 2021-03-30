@@ -1,84 +1,160 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
-using System.Text;
-using System.Windows.Forms;
 
-namespace Lab5_6
+namespace Lab5_7    
 {
     static class Program
     {
+        static public Form mainWin;
+
         [STAThread]
         static void Main(string[] args)
         {
-            Encoding encoding = Encoding.UTF8;
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Dictionary<string, Encoding> encodingPairs = new Dictionary<string, Encoding>
-            {
-                { "866", Encoding.GetEncoding(866) },
-                { "1251", Encoding.GetEncoding(1251) },
-                { "utf8", Encoding.UTF8 },
-                { "utf16", Encoding.GetEncoding(1200) }
-            };
-            string encodingName = "";
+            mainWin = new MainWindow();
+            mainWin.IsMdiContainer = true;
+            Application.Run(mainWin);
+        }
+    }
 
-            for (int i = 0; i < args.Length; i++)
-            {
-                if (args[i] == "-?" || args[i].ToLower() == "-help")
-                {
-                    Console.WriteLine(
-                        "Програма для редагування вмісту таблиці." +
-                        "a.exe [-? | -help] [-enc Encoding]" +
-                        "де\n" +
-                        "-? | -help    : отримання цієї справки\n" +
-                        "-enc Encoding : вказати кодування файлу (866, 1251, UTF8, UTF16)\n");
+    public class MainWindow : Form
+    {
+        private StatusStrip statStrip;
 
-                    return;
-                }
-                else if (args[i].ToLower() == "-enc")
-                {
-                    encodingName = setString(++i, args, "кодування");
-                }
-            }
+        public MainWindow()
+        {
+            MenuStrip Menu = new MenuStrip();
 
-            if (encodingPairs.ContainsKey(encodingName))
-            {
-                encoding = encodingPairs[encodingName];
-            }
-            else
-            {
-                Console.WriteLine("Введене кодування не підтримується, запустіть програму з ключем '-?' !");
-            }
+            ToolStripMenuItem FileIt = new ToolStripMenuItem("File");
+            ToolStripMenuItem DataIt = new ToolStripMenuItem("Data");
+            ToolStripMenuItem AboutIt = new ToolStripMenuItem("About");
+            ToolStripMenuItem ExitIt = new ToolStripMenuItem("Exit");
+            ToolStripMenuItem SupplierIt = new ToolStripMenuItem("Supplier");
+            ToolStripMenuItem PartIt = new ToolStripMenuItem("Part");
+            ToolStripMenuItem ProjectIt = new ToolStripMenuItem("Project");
+            ToolStripMenuItem DeliveryIt = new ToolStripMenuItem("Delivery");
+            ToolStripMenuItem WinIt = new ToolStripMenuItem("Windows");
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            FileIt.DropDownItems.Add(ExitIt);
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string fileName = openFileDialog.FileName;
+            AboutIt.Click += aboutF;
+            ExitIt.Click += exitF;
+            SupplierIt.Click += SupplierF;
+            PartIt.Click += PartF;
+            ProjectIt.Click += ProjectF;
+            DeliveryIt.Click += DeliveryF;
 
-                Application.Run(new Window3(fileName, encoding));
-            }
+            DataIt.DropDownItems.Add(SupplierIt);
+            DataIt.DropDownItems.Add(PartIt);
+            DataIt.DropDownItems.Add(ProjectIt);
+            DataIt.DropDownItems.Add(DeliveryIt);
+
+            Menu.Items.Add(FileIt);
+            Menu.Items.Add(DataIt);
+            Menu.Items.Add(WinIt);
+            Menu.Items.Add(AboutIt);
+
+            statStrip = new StatusStrip();
+            ToolStripStatusLabel
+            statLabel = new ToolStripStatusLabel();
+            statStrip.Items.Add(statLabel);
+            statLabel = new ToolStripStatusLabel();
+            statStrip.Items.Add(statLabel);
+            Controls.Add(statStrip);
+            Controls.Add(Menu);
+            statStrip.Items[0].Text = "окно готово";
+            statStrip.Items[1].Text = "дочерних окон нет";
         }
 
-        public static string setString(int i, string[] args, string par)
+        private bool shouldIOpen(string text)
         {
-            string ret = string.Empty;
-
-            if (i < args.Length)
+            for (int i = 0; i < MdiChildren.Length; i++)
             {
-                ret = args[i];
+                if (this.MdiChildren[i].Name == text)
+                {
+                    MdiChildren[i].Activate();
+                    return false;
+                }
             }
-            else
+            return true;
+        }
+        private void SupplierF(object sender, EventArgs a)
+        {
+            Console.WriteLine("Поставщики");
+            string id = "supplier";
+            if (shouldIOpen(id))
             {
-                Console.WriteLine($"Значення для параметра {0} не задано!", par);
-                Environment.Exit(2);
+                statStrip.Items[1].Text = "окно поставщиков не готово";
+                Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/s.csv", Encoding.UTF8);
+                z.MdiParent = Program.mainWin;
+                z.Text = "Поставщики";
+                z.Name = id;
+                z.Show();
             }
-
-            return ret;
+            statStrip.Items[1].Text = "Поставщики загружены";
+        }
+        private void PartF(object sender, EventArgs a)
+        {
+            Console.WriteLine("Детали");
+            string id = "part";
+            if (shouldIOpen(id))
+            {
+                statStrip.Items[1].Text = "окно деталей не готово";
+                Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/p.csv", Encoding.UTF8);
+                z.MdiParent = Program.mainWin;
+                z.Text = "Детали";
+                z.Name = id;
+                z.Show();
+            }
+            statStrip.Items[1].Text = "Детали загружены";
+        }
+        private void ProjectF(object sender, EventArgs a)
+        {
+            Console.WriteLine("Проекты");
+            string id = "project";
+            if (shouldIOpen(id))
+            {
+                statStrip.Items[1].Text = "окно проектов не готово";
+                Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/j.csv", Encoding.UTF8);
+                z.MdiParent = Program.mainWin;
+                z.Text = "Проекты";
+                z.Name = id;
+                z.Show();
+            }
+            statStrip.Items[1].Text = "Проекты загружены";
+        }
+        private void DeliveryF(object sender, EventArgs a)
+        {
+            Console.WriteLine("Поставки");
+            statStrip.Items[1].Text = "окно поставок не готово";
+            string id = "delivery";
+            if (shouldIOpen(id))
+            {
+                Form z = new Window2(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/spj.csv", Encoding.UTF8);
+                z.MdiParent = Program.mainWin;
+                z.Text = "Поставки";
+                z.Name = id;
+                z.Show();
+            }
+            statStrip.Items[1].Text = "Поставки загружены";
+        }
+        private void aboutF(object sender, EventArgs a)
+        {
+            Console.WriteLine("about");
+            statStrip.Items[1].Text = "открыли окно About";
+            MessageBox.Show("This programm was made by ImiaRek, Kiev 201?.");
+            statStrip.Items[1].Text = "дочерних окон нет";
+        }
+        private void exitF(object sender, EventArgs x)
+        {
+            Console.WriteLine("FormClosing");
+            //ClickEvent FormClosing = FormClosedEventHandler;
+            MessageBox.Show("exit");
+            Close();
         }
     }
 
@@ -103,10 +179,10 @@ namespace Lab5_6
         public WindowFields(string Title, Field[] fields) : base(Title)
         {
             dictionaryFields = new Dictionary<TextBox, Field>(); // создать список пар
-            
+
             for (int i = fields.Length - 1; i >= 0; i--)
             {
-                dictionaryFields.Add(addFld(i, fields[i]), fields[i]);            
+                dictionaryFields.Add(addFld(i, fields[i]), fields[i]);
             }
 
             okButton.Click += _KeyDown;
@@ -375,7 +451,7 @@ namespace Lab5_6
     {
         public Window3(string fnm, Encoding encoding) : base(fnm, encoding)
         {
-            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect; 
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView.RowHeadersVisible = false;
             toolStrip.ItemClicked -= base.ToolStripButtonClick;
             toolStrip.ItemClicked += ToolBarButtonClick3;
@@ -392,7 +468,7 @@ namespace Lab5_6
                 doEdit();
             }
         }
-        
+
         protected void _KeyDown(object sender, KeyEventArgs args)
         {
             if (args.KeyCode == Keys.Enter)
@@ -481,7 +557,7 @@ namespace Lab5_6
             {
                 answer = "Нічого змінювати!";
             }
-            
+
             Console.WriteLine("Змінено: '{0}'", answer);
             statStrip.Items[0].Text = answer;
         }
@@ -510,14 +586,14 @@ namespace Lab5_6
         {
             saveIntoFile(fileName);
             Console.WriteLine("Data saved!");
-            statStrip.Items[0].Text = "Data saved!";         
+            statStrip.Items[0].Text = "Data saved!";
         }
 
         public void doInsert()
         {
             Field field;
             List<Field> fields = new List<Field>();
-            
+
             for (int i = 0; i < dataGridView.ColumnCount; i++)
             {
                 field = new Field(dataGridView.Columns[i].Name, "");
@@ -528,7 +604,7 @@ namespace Lab5_6
             {
                 Form w = new WindowFields("Введіть новий запис", fields.ToArray());
                 DialogResult dialogResult = w.ShowDialog();
-                
+
                 if (dialogResult == DialogResult.OK)
                 {
                     Console.Error.WriteLine("doIns: кількість полів: '{0}' ", fields.Count);
