@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace Module1
         [STAThread]
         static void Main(string[] args)
         {
+            AllocConsole();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog.InitialDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -44,7 +46,12 @@ namespace Module1
 
             Console.WriteLine("End");
         }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
     }
+
 
     public class MainWindow : Form
     {
