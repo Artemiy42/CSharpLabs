@@ -14,15 +14,14 @@ namespace Lab5_6
         static void Main(string[] args)
         {
             Encoding encoding = Encoding.UTF8;
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Dictionary<string, Encoding> encodingPairs = new Dictionary<string, Encoding>
             {
-                { "866", Encoding.GetEncoding(866) },
+                /*{ "866", Encoding.GetEncoding(866) },
                 { "1251", Encoding.GetEncoding(1251) },
                 { "utf8", Encoding.UTF8 },
-                { "utf16", Encoding.GetEncoding(1200) }
+                { "utf16", Encoding.GetEncoding(1200) }*/
             };
-            string encodingName = "";
+            string encodingName = "utf8";
 
             for (int i = 0; i < args.Length; i++)
             {
