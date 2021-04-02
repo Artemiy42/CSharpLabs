@@ -168,8 +168,6 @@ namespace DZ
                 return;
             }
 
-            character = GetRandomLetter();
-
             switch (moveDirection)
             {
                 case Direction.Right:
