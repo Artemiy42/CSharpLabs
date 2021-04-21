@@ -1,6 +1,0 @@
-E:\Programming\C#\Projects\СSharpLabs\Lab2_2\bin\Debug\Lab2_2.exe
-E:\Programming\C#\Projects\СSharpLabs\Lab2_2\bin\Debug\Lab2_2.pdb
-E:\Programming\C#\Projects\СSharpLabs\Lab2_2\obj\Debug\Lab2_2.csprojAssemblyReference.cache
-E:\Programming\C#\Projects\СSharpLabs\Lab2_2\obj\Debug\Lab2_2.csproj.CoreCompileInputs.cache
-E:\Programming\C#\Projects\СSharpLabs\Lab2_2\obj\Debug\Lab2_2.exe
-E:\Programming\C#\Projects\СSharpLabs\Lab2_2\obj\Debug\Lab2_2.pdb
