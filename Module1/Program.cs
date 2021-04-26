@@ -31,7 +31,8 @@ namespace Module1
                 switch (rc)
                 {
                     case DialogResult.OK:
-                        Console.WriteLine(mainWindow.ReturnValue);
+                        ReturnWindow returnWindow = new ReturnWindow(mainWindow.ReturnValue);
+                        DialogResult res = returnWindow.ShowDialog();
                         break;
                     case DialogResult.Cancel:
                         Console.WriteLine("Canceled!");
@@ -40,8 +41,6 @@ namespace Module1
                         Console.WriteLine("Default result");
                         break;
                 }
-
-                DialogResult res = MessageBox.Show(mainWindow.ReturnValue, "Hide column", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             Console.WriteLine("End");
@@ -52,10 +51,70 @@ namespace Module1
         static extern bool AllocConsole();
     }
 
+    public struct ProductInfo
+    {
+        public int id;
+        public string name;
+        public int cost;
+        
+        public ProductInfo(int id, string name, int cost)
+        {
+            this.id = id;
+            this.name = name;
+            this.cost = cost;
+        }
+
+        public string[] ToListStrings()
+        {
+            string[] strs = new string[3];
+
+            strs[0] = id.ToString();
+            strs[1] = name;
+            strs[2] = cost.ToString();
+
+            return strs;
+        }
+
+        public override string ToString()
+        {
+            return $"{id} {name} {cost}";
+        }
+    }
+
+    public class ReturnWindow : Form
+    {
+        private DataGridView dataGridView;
+
+        public ReturnWindow(ProductInfo productInfo)
+        {
+            Text = "Вибраний рядок";
+            Padding = new Padding(10, 10, 10, 10);
+            Size = new Size(300, 150);
+
+            dataGridView = new DataGridView();
+            dataGridView.Name = "Col 2";
+            dataGridView.ReadOnly = true;
+            dataGridView.Dock = DockStyle.Fill;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.BackgroundColor = Color.White;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Controls.Add(dataGridView);
+
+            dataGridView.ColumnCount = 3;
+            dataGridView.Columns[0].Name = "Код";
+            dataGridView.Columns[1].Name = "Назва";
+            dataGridView.Columns[2].Name = "Ціна";
+            dataGridView.Rows.Add(productInfo.ToListStrings());
+            Console.WriteLine(productInfo.ToString());
+
+            DialogResult = DialogResult.Cancel;
+            StartPosition = FormStartPosition.CenterScreen;
+        }
+    }
 
     public class MainWindow : Form
     {
-        public string ReturnValue
+        public ProductInfo ReturnValue
         {
             get;
             private set;
@@ -68,7 +127,7 @@ namespace Module1
 
         public MainWindow(string filePath)
         {
-            Text = "Search in grid";
+            Text = "Пошук у таблиці";
             Padding = new Padding(10, 10, 10, 10);
             Size = new Size(500, 500);
 
@@ -82,8 +141,17 @@ namespace Module1
             AcceptButton = okButton; // нажатие клавиши Enter как на ок
             CancelButton = cancleButton; // нажатие клавиши Esc КАК НА Cancel
             StartPosition = FormStartPosition.CenterScreen;
+            dataGridView.Rows[0].Selected = true;
+            dataGridView.CellClick += DataDricView_OnCellClick;
 
             okButton.Click += _KeyDown;
+        }
+
+        private void DataDricView_OnCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = dataGridView.SelectedCells[0].OwningRow.Index;
+            dataGridView.ClearSelection();
+            dataGridView.Rows[rowIndex].Selected = true;
         }
 
         public void CreateOkButton()
@@ -92,7 +160,7 @@ namespace Module1
             okButton.Size = new Size(110, 30);
             okButton.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
             okButton.Location = new Point(20, 420);
-            okButton.Text = "Ok";
+            okButton.Text = "Ок";
             okButton.DialogResult = DialogResult.OK;
             Controls.Add(okButton);
         }
@@ -103,7 +171,7 @@ namespace Module1
             cancleButton.Size = new Size(110, 30);
             cancleButton.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
             cancleButton.Location = new Point(360, 420);
-            cancleButton.Text = "Cancel";
+            cancleButton.Text = "Відміна";
             cancleButton.DialogResult = DialogResult.Cancel;
             Controls.Add(cancleButton);
         }
@@ -114,7 +182,7 @@ namespace Module1
             searchBox.Size = new Size(110, 30);
             searchBox.Anchor = AnchorStyles.Top;
             searchBox.Location = new Point(20, 20);
-            searchBox.Text = "Search here";
+            searchBox.Text = "Шукати тут";
             searchBox.TextChanged += UpdateActiveCell;
             Controls.Add(searchBox);
         }
@@ -151,21 +219,19 @@ namespace Module1
 
         private void _KeyDown(object sender, EventArgs e)
         {
-            string answer = "";
-
             if (dataGridView.RowCount > 0)
             {
                 DataGridViewRow dataGridViewRow = dataGridView.Rows[dataGridView.CurrentRow.Index];
                 DataGridViewCellCollection row = dataGridViewRow.Cells;
 
-                answer = (string) row[row.Count - 1].Value;
+                ReturnValue = new ProductInfo(int.Parse((string) row[0].Value),
+                    (string) row[1].Value,
+                    int.Parse((string) row[2].Value));
             }
             else
             {
-                answer = "Таблиця пуста!";
+                Console.WriteLine("Таблиця пуста!");
             }
-
-            ReturnValue = answer;
         }
 
         public void ReadFile(string path)
