@@ -1,0 +1,1 @@
+LoggerTest.cs(10,19): warning CS0414: The field 'Program.Logger' is assigned but its value is never used

@@ -1,0 +1,1 @@
+Logger.cs(14,32): warning CS0649: Field 'Logger.Pair.lvl' is never assigned to, and will always have its default value 0
