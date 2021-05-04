@@ -1,0 +1,13 @@
+D:\Repositories\CSharpLabs\Lab6_1\bin\Debug\Lab6_1.exe.config
+D:\Repositories\CSharpLabs\Lab6_1\bin\Debug\Lab6_1.exe
+D:\Repositories\CSharpLabs\Lab6_1\bin\Debug\Lab6_1.pdb
+D:\Repositories\CSharpLabs\Lab6_1\bin\Debug\args.dll
+D:\Repositories\CSharpLabs\Lab6_1\bin\Debug\Logger.cs.dll
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.csprojAssemblyReference.cache
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.Properties.Resources.resources
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.csproj.GenerateResource.cache
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.csproj.CoreCompileInputs.cache
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.csproj.CopyComplete
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.exe
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.pdb
+D:\Repositories\CSharpLabs\Lab6_1\obj\Debug\Lab6_1.Properties.picslst.resources
