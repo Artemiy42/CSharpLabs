@@ -29,7 +29,7 @@ namespace Module2
         private Label label3;
 
         private string googleMaps = "https://maps.googleapis.com/maps/api/elevation/json";
-        private string key = "AIzaSyDlR2SjaR1_ZuGwSf1NPs0n8es73goqLuQ";
+        private string key = "AIzaSyAXwqEp163Da8CHM_VC4eZKZasMIlCJE0s";
 
         private IFormatProvider formatter = new NumberFormatInfo { NumberDecimalSeparator = "." };
 
@@ -110,7 +110,7 @@ namespace Module2
             double lat = double.Parse(textBox1.Text, formatter);
             double lng = double.Parse(textBox2.Text, formatter);
 
-            string url = googleMaps + $"?locations={lat.ToString(CultureInfo.InvariantCulture)},{lng.ToString(CultureInfo.InvariantCulture)}&key=" + key;
+            string url = googleMaps + $"?locations={lat.ToString(new CultureInfo("en-US", false))},{lng.ToString(new CultureInfo("en-US", false))}&key=" + key;
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -122,6 +122,7 @@ namespace Module2
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     string message = reader.ReadToEnd();
+                    Console.WriteLine(message);
                     resultRequest = JsonSerializer.Deserialize<Results>(message);
                 }
             }
