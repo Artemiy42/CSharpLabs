@@ -29,33 +29,37 @@ namespace Lab7_1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            // Видаляємо всі не числа із строки
             textBox1.Text = DeleteAllSymbolExceptDigit(textBox1.Text);
+            // Ствимо курсор в кінець тексту
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.SelectionLength = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int arraySize = int.Parse(textBox1.Text);
-        
-            if (arraySize > 1000000)
+            try
             {
-                outTextBox.AppendText($"Будь-ласка введіть розмір масиву в діапазоні [1; 1000000]");
+                int arraySize = int.Parse(textBox1.Text);
+
+                array = new int[arraySize];
+                FillArrayRandomNumbers(ref array, 100);
+
+                outTextBox.AppendText($"Створений масив довжиной: {arraySize}");
+                PrintNewLine();
+
+                if (checkBox2.Checked)
+                {
+                    PrintArray(array);
+                }
+
+                button2.Enabled = true;
+            }
+            catch(Exception exception)
+            {
+                outTextBox.AppendText($"Будь-ласка введіть розмір масиву в діапазоні [0; 2147483647]");
                 return;
             }
-            
-            array = new int[arraySize];
-            FillArrayRandomNumbers(ref array, 100);
-
-            outTextBox.AppendText($"Створений масив довжиной: {arraySize}");
-            PrintNewLine();
-
-            if (checkBox2.Checked)
-            {
-                PrintArray(array);
-            }
-
-            button2.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -92,17 +96,15 @@ namespace Lab7_1
                 int key = array[i];
                 int j = i;
                 
-                while ((j > 1) && (array[j - 1] > key))
+                while (j > 0 && key < array[j - 1])
                 {
                     Swap(ref array[j - 1], ref array[j]);
                     j--;
                 }
 
-                array[j] = key;
-
                 if (checkBox1.Checked)
                 {
-                    outTextBox.AppendText($"Крок №{i + 1}");
+                    outTextBox.AppendText($"Крок №{i}");
                     PrintNewLine();
                     PrintArray(array);
                 }
