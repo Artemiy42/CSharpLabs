@@ -74,7 +74,7 @@ namespace Lab7_1
             else
                 currentSortingMethod = SortingMethod.Bubble;
 
-            outTextBox.AppendText("Початок сортування методом" + GetSortingName(currentSortingMethod));
+            outTextBox.AppendText("Початок сортування методом " + GetSortingName(currentSortingMethod));
             PrintNewLine();
 
             Stopwatch watch = Stopwatch.StartNew();
@@ -95,7 +95,7 @@ namespace Lab7_1
             watch.Stop();
             long elapsedMs = watch.ElapsedMilliseconds;
 
-            outTextBox.AppendText("Кінець сортування методом" + GetSortingName(currentSortingMethod));
+            outTextBox.AppendText("Кінець сортування методом " + GetSortingName(currentSortingMethod));
             PrintNewLine();
             outTextBox.AppendText($"Масив було відсортовано за {elapsedMs / 1000f} сек.");
             PrintNewLine();
@@ -106,7 +106,7 @@ namespace Lab7_1
             switch (sortingMethod)
             {
                 case SortingMethod.Insert:
-                    return "вставка";
+                    return "вставки";
                 case SortingMethod.Shella:
                     return "Шелла";
                 case SortingMethod.Bubble:
