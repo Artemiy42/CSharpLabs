@@ -17,7 +17,8 @@ namespace Lab7_1
         public enum SortingMethod
         { 
             Insert,
-            Shella
+            Shella,
+            Bubble
         }
 
         private int[] array;
@@ -64,9 +65,16 @@ namespace Lab7_1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SortingMethod currentSortingMethod = radioButton1.Checked ? SortingMethod.Insert : SortingMethod.Shella;
+            SortingMethod currentSortingMethod;
 
-            outTextBox.AppendText("Початок сортування " + (currentSortingMethod == SortingMethod.Insert ? "методом вставки" : "методом Шелла"));
+            if (radioButton1.Checked)
+                currentSortingMethod = SortingMethod.Insert;
+            else if (radioButton2.Checked)
+                currentSortingMethod = SortingMethod.Shella;
+            else
+                currentSortingMethod = SortingMethod.Bubble;
+
+            outTextBox.AppendText("Початок сортування методом" + GetSortingName(currentSortingMethod));
             PrintNewLine();
 
             Stopwatch watch = Stopwatch.StartNew();
@@ -75,18 +83,37 @@ namespace Lab7_1
             {
                 InsertSorting((int[]) array.Clone());
             }
-            else
+            else if (currentSortingMethod == SortingMethod.Shella)
             {
                 ShellaSorting((int[])array.Clone());
             }    
+            else
+            {
+                BubbleSorting((int[])array.Clone());
+            }
 
             watch.Stop();
             long elapsedMs = watch.ElapsedMilliseconds;
 
-            outTextBox.AppendText("Кінець сортування " + (currentSortingMethod == SortingMethod.Insert ? "методом вставки" : "методом Шелла"));
+            outTextBox.AppendText("Кінець сортування методом" + GetSortingName(currentSortingMethod));
             PrintNewLine();
             outTextBox.AppendText($"Масив було відсортовано за {elapsedMs / 1000f} сек.");
             PrintNewLine();
+        }
+
+        private string GetSortingName(SortingMethod sortingMethod)
+        {
+            switch (sortingMethod)
+            {
+                case SortingMethod.Insert:
+                    return "вставка";
+                case SortingMethod.Shella:
+                    return "Шелла";
+                case SortingMethod.Bubble:
+                    return "бульбашки";
+            }
+
+            return "";
         }
 
         private int[] InsertSorting(int[] array)
@@ -136,6 +163,32 @@ namespace Lab7_1
                 if (checkBox1.Checked)
                 {
                     outTextBox.AppendText($"Крок №{step++}");
+                    PrintNewLine();
+                    PrintArray(array);
+                }
+            }
+
+            return array;
+        }
+
+        // Сортування бульбашкою
+        private int[] BubbleSorting(int[] array)
+        {
+            int len = array.Length;
+            for (int i = 1; i < len; i++)
+            {
+                for (int j = 0; j < len - i; j++)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        Swap(ref array[j], ref array[j + 1]);
+                    }
+
+                }
+                
+                if (checkBox1.Checked)
+                {
+                    outTextBox.AppendText($"Крок №{i}");
                     PrintNewLine();
                     PrintArray(array);
                 }
