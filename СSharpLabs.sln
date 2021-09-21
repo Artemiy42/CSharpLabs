@@ -59,6 +59,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exponent", "Exponent\Expone
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab7_1", "Lab7_1\Lab7_1.csproj", "{C172DB19-A4D7-4FBF-AFEA-9BB126E06C74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab7_2", "Lab7_2\Lab7_2.csproj", "{A4B120FB-D039-46A3-BFBC-FAC10608168E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -405,6 +407,18 @@ Global
 		{C172DB19-A4D7-4FBF-AFEA-9BB126E06C74}.Release|x64.Build.0 = Release|Any CPU
 		{C172DB19-A4D7-4FBF-AFEA-9BB126E06C74}.Release|x86.ActiveCfg = Release|Any CPU
 		{C172DB19-A4D7-4FBF-AFEA-9BB126E06C74}.Release|x86.Build.0 = Release|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Debug|x64.Build.0 = Debug|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Debug|x86.Build.0 = Debug|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Release|x64.ActiveCfg = Release|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Release|x64.Build.0 = Release|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Release|x86.ActiveCfg = Release|Any CPU
+		{A4B120FB-D039-46A3-BFBC-FAC10608168E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
